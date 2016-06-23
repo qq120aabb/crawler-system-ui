@@ -1,0 +1,39 @@
+<!-- list -->
+<ul class="nav">
+    <li ui-sref-active="active">
+        <a ui-sref="app.dashboard">
+            <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+            <span class="font-bold">Dashboard</span>
+        </a>
+    </li>
+    <li>
+        <a href class="auto">
+          <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+          </span>
+          <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+          <span class="font-bold">配置管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
+          <li ui-sref-active="active">
+            <a ui-sref="app.crawler.config">
+              <span>配置信息</span>
+            </a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="app.cashloan.repayment">
+              <span>数据展示</span>
+            </a>
+          </li>
+        </ul>
+    </li>
+    <li ui-sref-active="active">
+        <a>
+            <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
+            <span class="font-bold">模版</span>
+        </a>
+    </li>
+
+</ul>
+<!-- / list -->

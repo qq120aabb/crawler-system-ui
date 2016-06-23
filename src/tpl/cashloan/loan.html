@@ -1,0 +1,80 @@
+<div class="wrapper-md" ng-controller="CashloanRepayment">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            现金贷
+        </div>
+        <div class="row wrapper">
+            <div class="col-sm-5 m-b-xs">
+                <input ui-jq="daterangepicker" ui-options="{
+                timePicker: true,
+                timePickerSeconds: true,
+                timePicker24Hour: true,
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                }
+              }" placeholder="放款区间" class="form-control w-md input-sm inline" ng-model="dateRange" />
+                <select class="input-sm form-control w-sm inline v-middle" ng-model="paymentPlatform">
+                    <option value="">--全部--</option>
+                    <option value="001">易宝</option>
+                </select>
+                <input placeholder="客户来源" class="form-control w-xs input-sm inline" ng-model="channelName" />
+                <input placeholder="借款订单号" class="form-control w-xs input-sm inline" ng-model="loanApplicationManifestHistoryId">
+                <input placeholder="放款方" class="form-control w-xs input-sm inline" ng-model="fundingCorpName">
+                <input placeholder="资金方" class="form-control w-xs input-sm inline" ng-model="debtFundingCorp">
+                <input placeholder="姓名" class="form-control w-xs input-sm inline" ng-model="userName">
+                <input placeholder="手机号" class="form-control w-xs input-sm inline" ng-model="userPhone">
+                <input placeholder="身份证" class="form-control w-xs input-sm inline" ng-model="idNo">
+                <button class="btn btn-primary" ng-click="getList(0)"><i class="fa fa-search"></i>搜索</button>
+                <button class="btn btn-primary" ng-click="exportLoanExcel()"><i class="fa fa-search"></i>导出</button>
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                    <tr>
+                        <th>支付id</th>
+                        <th>借款订单号</th>
+                        <th>客户来源</th>
+                        <th>姓名</th>
+                        <th>身份证</th>
+                        <th>电话号码</th>
+                        <th>支付渠道</th>
+                        <th>支付渠道订单号</th>
+                        <th>放款金额</th>
+                        <th>放款日期</th>
+                        <th>放款方</th>
+                        <th>资金方</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr ng-repeat="item in data">
+                            <td>{{item.orderId}}</td>
+                            <td>{{item.loanApplicationManifestHistoryId}}</td>
+                            <td>{{item.channelName}}</td>
+                            <td>{{item.userName}}</td>
+                            <td>{{item.idNo}}</td>
+                            <td>{{item.userPhone}}</td>
+                            <td>{{item.paymentPlatform}}</td>
+                            <td>{{item.yorderId}}</td>
+                            <td>{{item.realLoanAmount}}</td>
+                            <td>{{item.loanPaidAt}}</td>
+                            <td>{{item.fundingCorpName}}</td>
+                            <td>{{item.debtFundingCorp}}</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-sm-6 text-left">
+                    <small class="text-muted inline m-t-sm m-b-sm">当前 20-30 of 50 items</small>
+                </div>
+                <div class="col-sm-6 text-right text-center-xs">
+                    <pagination total-items="page.totalItems" ng-model="page.currentPage" max-size="5" class="m-t-none m-b" boundary-links="true" rotate="false" ng-change="getList(page.currentPage)"></pagination>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>

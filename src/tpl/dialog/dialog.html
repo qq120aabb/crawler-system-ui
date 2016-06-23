@@ -1,0 +1,45 @@
+<style>
+.dialog {
+    padding: 20px;
+}
+.dialog form div {
+    margin-top: 10px;
+}
+.dialog .button {
+    margin: 10px auto;
+}
+</style>
+<div class="dialog" ng-controller="ThirdPartPaymentController">
+    <div class="header">
+        <h3>上传支付记录</h3>
+    </div>
+    <div class="content">
+        <form>
+            <div>
+                渠道：<select class="c-select" ng-model="upload_paymentPlatform">
+                        <option value="001" selected="selected">易宝</option>
+                </select>
+            </div>
+            <div>
+                <input ui-jq="daterangepicker" ui-options="{
+                timePicker: true,
+                timePickerSeconds: true,
+                timePicker24Hour: true,
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                }
+              }" placeholder="业务数据日期" class="form-control w-md input-sm inline" ng-model="upload_dateRange" />
+            </div>
+            <div>
+                文件：<input type="file" ng-model="uploand_file" >
+            </div>
+            <div>
+                邮箱： <input type="text" placeholder="输入邮箱" ng-model="uplod_mail">
+            </div>
+            <div class="button">
+                <button ng-click="closeDialog()" class="btn btn-primary btn-sm">取消</button>
+                <button class="btn btn-primary btn-sm" ng-click="uploadFile()">上传</button>
+            </div>
+        </form>
+    </div>
+</div>
